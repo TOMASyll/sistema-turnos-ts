@@ -1,10 +1,6 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync({ sigint: true });
 
-// ------------------------------------
-// 1. DEFINICIÓN DE TIPOS Y DATOS
-// ------------------------------------
-
 interface Cita {
     paciente: string | null;
     fecha: string | null;
@@ -13,10 +9,6 @@ interface Cita {
 }
 
 const misCitas: Cita[] = [];
-
-// ------------------------------------
-// 2. FUNCIÓN PRINCIPAL (EL MENÚ)
-// ------------------------------------
 
 function iniciarPrograma(): void {
     let opcionUsuario: string | null;
@@ -42,10 +34,6 @@ function iniciarPrograma(): void {
     } while (opcionUsuario !== '3');
 }
 
-// ------------------------------------
-// 3. FUNCIÓN PARA AGREGAR CITA
-// ------------------------------------
-
 function ponerCita(): void {
     const nombrePaciente: string | null = prompt('Dime el nombre del paciente:');
     const elDia: string | null = prompt('Dime la fecha (AAAA-MM-DD):');
@@ -63,17 +51,13 @@ function ponerCita(): void {
     console.log('Cita guardada con éxito.');
 }
 
-// ------------------------------------
-// 4. FUNCIÓN PARA VER CITAS
-// ------------------------------------
-
 function mostrarCitas(): void {
     if (misCitas.length === 0) {
         console.log('No hay ninguna cita guardada.');
         return;
     }
     
-    // Ordena las citas por fecha y hora
+    // Ordenar las citas por fecha y hora
     misCitas.sort((a: Cita, b: Cita) => {
         const tiempoA = new Date(`${a.fecha as string}T${a.hora as string}`);
         const tiempoB = new Date(`${b.fecha as string}T${b.hora as string}`);
@@ -89,7 +73,4 @@ function mostrarCitas(): void {
     console.log(textoDeLista);
 }
 
-// ------------------------------------
-// INICIAR EL PROGRAMA
-// ------------------------------------
 iniciarPrograma();

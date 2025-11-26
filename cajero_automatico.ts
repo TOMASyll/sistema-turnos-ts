@@ -1,10 +1,6 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync({ sigint: true });
 
-// ------------------------------------
-// 1. DEFINICIÓN DE TIPOS Y DATOS
-// ------------------------------------
-
 interface Cliente {
   doc: string;
   clave: string;
@@ -16,10 +12,6 @@ const clientes: Cliente[] = [
   { doc: '87654321', clave: '4321', saldo: 500 }
 ];
 
-// ------------------------------------
-// 2. FUNCIÓN PRINCIPAL DE INICIO
-// ------------------------------------
-
 function iniciarCajero(): void {
   const docEntrada: string | null = prompt('Documento:');
   const pinEntrada: string | null = prompt('PIN:');
@@ -29,7 +21,7 @@ function iniciarCajero(): void {
       return;
   }
 
-  // Busca al usuario
+  // Buscar usuario por documento y clave
   const miUsuario: Cliente | undefined = clientes.find(u => u.doc === docEntrada && u.clave === pinEntrada);
   
   if (miUsuario) {
@@ -38,10 +30,6 @@ function iniciarCajero(): void {
     console.log('Documento o PIN incorrectos.');
   }
 }
-
-// ------------------------------------
-// 3. FUNCIÓN DEL MENÚ
-// ------------------------------------
 
 function menu(usuario: Cliente): void {
   let opcion: string | null;
@@ -88,7 +76,4 @@ function menu(usuario: Cliente): void {
   } while (seguir);
 }
 
-// ------------------------------------
-// INICIAR EL PROGRAMA
-// ------------------------------------
 iniciarCajero();

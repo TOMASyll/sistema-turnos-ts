@@ -1,8 +1,5 @@
-// --- CAMBIO AQUÍ ---
 import promptSync from 'prompt-sync';
 const prompt = promptSync({ sigint: true });
-// --------------------
-
 const colaDeTurnos: number[] = [];
 let contadorTurnos: number = 0;
 

@@ -1,10 +1,7 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync({ sigint: true });
 
-// ------------------------------------
 // 1. DEFINICIÓN DE TIPOS Y DATOS
-// ------------------------------------
-
 type CapacidadMap = {
   i: number;
   d: number;
@@ -14,7 +11,7 @@ type CapacidadMap = {
 
 interface Reserva {
   n: string; // nombre
-  p: string; // país
+  p: string; // pais
   t: 'i' | 'd' | 'f'; // tipo (individual, doble, familiar)
   f: boolean; // fumador
   pers: number; // personas
@@ -22,17 +19,14 @@ interface Reserva {
   mas: boolean; // mascota
 }
 
-const r: Reserva[] = [];
+const r: Reserva[] = []; // Array para guardar las reservas
 const cap: CapacidadMap = { 
   i: 2, // Individual: 2 personas
   d: 4, // Doble: 4 personas
   f: 6  // Familiar: 6 personas
 };
 
-// ------------------------------------
-// 2. FUNCIÓN PRINCIPAL DE REGISTRO
-// ------------------------------------
-
+// 2. FUNCIÓN PRINCIPAL
 function iniciarReservas(): void {
   let seguir: boolean = true;
 
@@ -77,6 +71,7 @@ function iniciarReservas(): void {
       }
     }
 
+    // Guardar la nueva reserva
     r.push({
       n: nombre,
       p: pais || '',
@@ -96,10 +91,7 @@ function iniciarReservas(): void {
   mostrarResumenFinal();
 }
 
-// ------------------------------------
 // 3. FUNCIÓN DE RESUMEN
-// ------------------------------------
-
 function mostrarResumenFinal(): void {
   let totalPersonas: number = 0;
   let resumen: string = '--- RESUMEN DE RESERVAS ---\n';
@@ -119,7 +111,4 @@ function mostrarResumenFinal(): void {
   console.log('¡Fin del sistema de reservas!');
 }
 
-// ------------------------------------
-// INICIAR EL PROGRAMA
-// ------------------------------------
 iniciarReservas();
